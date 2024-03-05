@@ -29,7 +29,7 @@ public class PrepareShipmentActivity
      *      Provided because AWS Lambda needs one defined evenif it does nothing
      */
     public PrepareShipmentActivity() {}
-    /**
+     /**
      * Instantiates a new PrepareShipmentActivity object.
      * @param shipmentService Shipment service used to retrieve shipment options.
      */

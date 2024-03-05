@@ -1,7 +1,6 @@
 package com.amazon.ata.activity;
 
 import com.amazon.ata.service.ShipmentService;
-
 import com.amazon.ata.types.FulfillmentCenter;
 import com.amazon.ata.types.Item;
 import com.amazon.ata.types.ShipmentOption;

@@ -11,12 +11,21 @@ public class PrepareShipmentResponse {
     private Packaging packaging;
     private FulfillmentCenter fulfillmentCenter;
 
+    /**
+     * PrepareShipmentResponse.
+     */
     public PrepareShipmentResponse() {
         this.item              = null;
         this.packaging         = null;
         this.fulfillmentCenter = null;
     }
 
+    /**
+     * PrepareShipmentResponse.
+     * @param item 123
+     * @param packaging 123
+     * @param fulfillmentCenter 123
+     */
     public PrepareShipmentResponse(Item item, Packaging packaging, FulfillmentCenter fulfillmentCenter) {
         this.item = item;
         this.packaging = packaging;
@@ -47,6 +56,7 @@ public class PrepareShipmentResponse {
         this.fulfillmentCenter = fulfillmentCenter;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,8 +66,8 @@ public class PrepareShipmentResponse {
             return false;
         }
         PrepareShipmentResponse that = (PrepareShipmentResponse) o;
-        return getItem().equals(that.getItem()) && getPackaging().equals(that.getPackaging())
-                                                && getFulfillmentCenter().equals(that.getFulfillmentCenter());
+        return getItem().equals(that.getItem()) && getPackaging().equals(that.getPackaging()) &&
+                getFulfillmentCenter().equals(that.getFulfillmentCenter());
     }
 
     @Override

@@ -38,6 +38,9 @@ public class PrepareShipmentRequest {
     */
     private String fcCode;
 
+    /**
+     * PrepareShipmentRequest.
+     */
     public PrepareShipmentRequest() {
         this.asin   = "0000000000";
         this.description = "Frank Test Default Item - should not ever be needed - only used for testing";
@@ -47,7 +50,15 @@ public class PrepareShipmentRequest {
         this.fcCode = "IND1";
     }
 
-
+    /**
+     * PrepareShipmentRequest.
+     * @param asin 123
+     * @param description 123
+     * @param fcCode 123
+     * @param height 123
+     * @param length 123
+     * @param width 123
+     */
     public PrepareShipmentRequest(String asin, String description, BigDecimal length, BigDecimal width,
                                   BigDecimal height, String fcCode) {
         this.asin = asin;
@@ -58,6 +69,10 @@ public class PrepareShipmentRequest {
         this.fcCode = fcCode;
     }
 
+    /**
+     * PrepareShipmentRequest.
+     * @param builder 123
+     */
     public PrepareShipmentRequest(Builder builder) {
         this.asin = builder.asin;
         this.description = builder.description;
@@ -243,7 +258,7 @@ public class PrepareShipmentRequest {
         * @return a {@code Item} built with parameters of this {@code Item.Builder}
         */
         public PrepareShipmentRequest build() {
-        return new PrepareShipmentRequest(this);
+            return new PrepareShipmentRequest(this);
         }
     }
 

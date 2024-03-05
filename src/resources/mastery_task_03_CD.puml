@@ -1,0 +1,33 @@
+@startuml
+
+package types {
+    abstract class Packaging {
+        {abstract} canFitItem(): boolean
+        {abstract} getMass(): BigDecimal
+    }
+
+    class Box {
+        - length: BigDecimal
+        - width: BigDecimal
+        - height: BigDecimal
+        + canFitItem(): boolean
+        + getMass(): BigDecimal
+    }
+
+    class PolyBag {
+        + volume: BigDecimal
+        + canFitItem(): boolean
+        + getMass(): BigDecimal
+    }
+
+    enum Material {
+        CORRUGATE
+        LAMINATED_PLASTIC
+    }
+
+    Packaging <|-- Box
+    Packaging <|-- PolyBag
+    Packaging *-- Material
+}
+
+@enduml
