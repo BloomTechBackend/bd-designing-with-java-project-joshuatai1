@@ -10,7 +10,7 @@ import java.util.Objects;
  * Items can fit in the packaging so long as their dimensions are all smaller than
  * the packaging's dimensions.
  */
-public class Packaging {
+public abstract class Packaging {
     private Material material;
 
     /**
@@ -19,18 +19,14 @@ public class Packaging {
      * @param item the item to test fit for
      * @return whether the item will fit in this packaging
      */
-    public boolean canFitItem(Item item) {
-        throw new UnsupportedOperationException("This method is not supported!");
-    }
+    public abstract boolean canFitItem(Item item);
 
     /**
      * Returns the mass of the packaging in grams. The packaging weighs 1 gram per square centimeter.
      *
      * @return the mass of the packaging
      */
-    public BigDecimal getMass() {
-        throw new UnsupportedOperationException("This method is not supported!");
-    }
+    public abstract BigDecimal getMass();
 
     public Material getMaterial() {
         return material;

@@ -42,8 +42,22 @@ public class PolyBag extends Packaging {
     public Material getMaterial() {
         return this.material;
     }
+
+    public BigDecimal getVolume() {
+        return volume;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PolyBag polyBag = (PolyBag) o;
+        return Objects.equals(volume, polyBag.volume) &&
+                material == polyBag.material;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(super.getMaterial(), volume);
+        return Objects.hash(volume, material);
     }
 }

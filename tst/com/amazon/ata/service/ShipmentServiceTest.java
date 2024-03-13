@@ -1,12 +1,15 @@
 package com.amazon.ata.service;
 
+import com.amazon.ata.cost.CostStrategy;
 import com.amazon.ata.cost.MonetaryCostStrategy;
 import com.amazon.ata.dao.PackagingDAO;
 import com.amazon.ata.datastore.PackagingDatastore;
 import com.amazon.ata.types.FulfillmentCenter;
 import com.amazon.ata.types.Item;
 import com.amazon.ata.types.ShipmentOption;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.math.BigDecimal;
 
@@ -33,6 +36,21 @@ class ShipmentServiceTest {
 
     private ShipmentService shipmentService = new ShipmentService(new PackagingDAO(new PackagingDatastore()),
             new MonetaryCostStrategy());
+
+//    @Test
+//    void testFindShipmentOptionWithUnknownFulfillmentCenter(){
+//        PackagingDAO packagingDAO = new PackagingDAO();
+//        CostStrategy costStrategy = new SimpleCostStrategy();
+//
+//        ShipmentService service = new ShipmentService(packagingDAO, costStrategy);
+//
+//        Item item = new Item();
+//        FulfillmentCenter center = new FulfillmentCenter();
+//
+//        ShipmentOption result = service.findShipmentOption(item, center);
+//
+//        Assertions.assertNotNull(result, "ShipmentOption should not be null");
+//    }
 
     @Test
     void findBestShipmentOption_existentFCAndItemCanFit_returnsShipmentOption() {

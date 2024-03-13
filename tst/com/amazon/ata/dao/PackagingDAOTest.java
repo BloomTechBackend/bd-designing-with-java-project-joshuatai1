@@ -3,9 +3,7 @@ package com.amazon.ata.dao;
 import com.amazon.ata.datastore.PackagingDatastore;
 import com.amazon.ata.exceptions.NoPackagingFitsItemException;
 import com.amazon.ata.exceptions.UnknownFulfillmentCenterException;
-import com.amazon.ata.types.FulfillmentCenter;
-import com.amazon.ata.types.Item;
-import com.amazon.ata.types.ShipmentOption;
+import com.amazon.ata.types.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -101,4 +99,43 @@ class PackagingDAOTest {
                 .withLength(new BigDecimal(height))
                 .build();
     }
+
+//    @Test
+//    public void findShipmentOptions_duplicatePackagingOptionsForIAD2_returnSingleOption() throws Exception {
+//        // GIVEN
+//        // Create a PackagingDatastore with data containing duplicate packaging options for IAD2
+//        PackagingDatastore datastore = new PackagingDatastore();
+//        // Intentionally adding a duplicate for testing purposes
+//        datastore.addFcPackagingOption("IAD2", Material.CORRUGATE, "20", "20", "20");
+//
+//        packagingDAO = new PackagingDAO(datastore);
+//
+//        // WHEN
+//        // Find shipment options for an item at IAD2
+//        List<ShipmentOption> shipmentOptions = packagingDAO.findShipmentOptions(smallItem, iad2);
+//
+//        // THEN
+//        // Assert that only one option is returned despite the duplicates in the datastore
+//        assertEquals(1, shipmentOptions.size(),
+//                "When fulfillment center has duplicate packaging options, only one should be returned.");
+//    }
+
+//    // Mock PackagingDatastore class with duplicate packaging options for IAD2 for testing purposes
+//    private static class MockPackagingDatastoreWithDuplicates extends PackagingDatastore {
+//        @Override
+//        public List<FcPackagingOption> getFcPackagingOptions() {
+//            // Mock data for IAD2 with duplicate packaging options
+//            FulfillmentCenter iad2 = new FulfillmentCenter("IAD2");
+//
+//            // Create duplicate packaging options for IAD2
+//            Box box = new Box(new BigDecimal("20"), new BigDecimal("20"), new BigDecimal("20"));
+//            PolyBag polyBag = new PolyBag(new BigDecimal("10000"));
+//
+//            // Create FcPackagingOption instances
+//            FcPackagingOption option1 = new FcPackagingOption(iad2, box);
+//            FcPackagingOption option2 = new FcPackagingOption(iad2, polyBag);
+//
+//            return List.of(option1, option2);
+//        }
+//    }
 }

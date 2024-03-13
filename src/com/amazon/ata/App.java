@@ -1,10 +1,14 @@
 package com.amazon.ata;
 
+import com.amazon.ata.cost.CarbonCostStrategy;
 import com.amazon.ata.cost.CostStrategy;
 import com.amazon.ata.cost.MonetaryCostStrategy;
+import com.amazon.ata.cost.WeightedCostStrategy;
 import com.amazon.ata.dao.PackagingDAO;
 import com.amazon.ata.datastore.PackagingDatastore;
 import com.amazon.ata.service.ShipmentService;
+
+import java.math.BigDecimal;
 
 public class App {
     /* don't instantiate me */
@@ -19,9 +23,20 @@ public class App {
     }
 
     private static CostStrategy getCostStrategy() {
-        return new MonetaryCostStrategy();
-    }
+        // Adjust the weights as needed
+        double monetaryWeight = 0.8;
+        double carbonWeight = 0.2;
 
+        // Instantiate the necessary strategies
+        CostStrategy monetaryCostStrategy = new MonetaryCostStrategy();
+        CostStrategy carbonCostStrategy = new CarbonCostStrategy();
+
+        // Use the builder pattern to create a WeightedCostStrategy instance
+        return WeightedCostStrategy.builder()
+                .addStrategyWithWeight(monetaryCostStrategy, BigDecimal.valueOf(monetaryWeight))
+                .addStrategyWithWeight(carbonCostStrategy, BigDecimal.valueOf(carbonWeight))
+                .build();
+    }
     public static ShipmentService getShipmentService() {
         return new ShipmentService(getPackagingDAO(), getCostStrategy());
     }

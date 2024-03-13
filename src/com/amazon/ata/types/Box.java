@@ -24,6 +24,9 @@ public class Box extends Packaging {
      */
     private BigDecimal height;
 
+    private int boxCount;
+
+
     /**
      * Instantiates a new Packaging object.
      *
@@ -57,13 +60,40 @@ public class Box extends Packaging {
         return mass;
     }
 
+    public void incrementBoxCount() {
+        this.boxCount++;
+    }
+
+    public BigDecimal getLength() {
+        return length;
+    }
+
+    public BigDecimal getWidth() {
+        return width;
+    }
+
+    public BigDecimal getHeight() {
+        return height;
+    }
+
     @Override
     public Material getMaterial() {
         return this.material;
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Box box = (Box) o;
+        return Objects.equals(length, box.length) &&
+                Objects.equals(width, box.width) &&
+                Objects.equals(height, box.height) &&
+                material == box.material;
+    }
+
+    @Override
     public int hashCode() {
-        return Objects.hash(super.getMaterial(), length, width, height);
+        return Objects.hash(length, width, height, material);
     }
 }
