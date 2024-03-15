@@ -119,23 +119,4 @@ class PackagingDAOTest {
 //        assertEquals(1, shipmentOptions.size(),
 //                "When fulfillment center has duplicate packaging options, only one should be returned.");
 //    }
-
-//    // Mock PackagingDatastore class with duplicate packaging options for IAD2 for testing purposes
-//    private static class MockPackagingDatastoreWithDuplicates extends PackagingDatastore {
-//        @Override
-//        public List<FcPackagingOption> getFcPackagingOptions() {
-//            // Mock data for IAD2 with duplicate packaging options
-//            FulfillmentCenter iad2 = new FulfillmentCenter("IAD2");
-//
-//            // Create duplicate packaging options for IAD2
-//            Box box = new Box(new BigDecimal("20"), new BigDecimal("20"), new BigDecimal("20"));
-//            PolyBag polyBag = new PolyBag(new BigDecimal("10000"));
-//
-//            // Create FcPackagingOption instances
-//            FcPackagingOption option1 = new FcPackagingOption(iad2, box);
-//            FcPackagingOption option2 = new FcPackagingOption(iad2, polyBag);
-//
-//            return List.of(option1, option2);
-//        }
-//    }
 }

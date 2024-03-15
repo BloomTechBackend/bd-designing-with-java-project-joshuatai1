@@ -30,11 +30,12 @@ public class Box extends Packaging {
     /**
      * Instantiates a new Packaging object.
      *
+     * @param material something.
      * @param length   - the length of the package
      * @param width    - the width of the package
      * @param height   - the height of the package
      */
-    public Box(BigDecimal length, BigDecimal width, BigDecimal height) {
+    public Box(Material material, BigDecimal length, BigDecimal width, BigDecimal height) {
         this.material = Material.CORRUGATE;
         this.length = length;
         this.width = width;
@@ -60,6 +61,9 @@ public class Box extends Packaging {
         return mass;
     }
 
+    /**
+     * incrementBoxCount.
+     */
     public void incrementBoxCount() {
         this.boxCount++;
     }
@@ -83,8 +87,12 @@ public class Box extends Packaging {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Box box = (Box) o;
         return Objects.equals(length, box.length) &&
                 Objects.equals(width, box.width) &&

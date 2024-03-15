@@ -16,10 +16,10 @@ public class PolyBag extends Packaging {
 
     /**
      * Instantiates a new Packaging object.
-     *
+     * @param material something.
      * @param volume  - the volume of the package
      */
-    public PolyBag(BigDecimal volume) {
+    public PolyBag(Material material, BigDecimal volume) {
         this.material = Material.LAMINATED_PLASTIC;
         this.volume = volume;
     }
@@ -35,7 +35,8 @@ public class PolyBag extends Packaging {
 
     @Override
     public BigDecimal getMass() {
-        return volume;
+        double mass = Math.ceil(Math.sqrt(volume.doubleValue()) * 0.6);
+        return BigDecimal.valueOf(mass);
     }
 
     @Override
@@ -49,8 +50,12 @@ public class PolyBag extends Packaging {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PolyBag polyBag = (PolyBag) o;
         return Objects.equals(volume, polyBag.volume) &&
                 material == polyBag.material;

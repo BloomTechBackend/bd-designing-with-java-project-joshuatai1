@@ -1,6 +1,5 @@
 package com.amazon.ata.cost;
 
-import com.amazon.ata.cost.CostStrategy;
 import com.amazon.ata.types.ShipmentCost;
 import com.amazon.ata.types.ShipmentOption;
 
@@ -18,8 +17,15 @@ public class WeightedCostStrategy implements CostStrategy {
     private final Map<BigDecimal, CostStrategy> costStrategies = new HashMap<>();
     private double totalWeight = 0.0;
 
+    /**
+     * WeightedCost Strategy.
+     */
     private WeightedCostStrategy() {}
 
+    /**
+    Builder.
+    @return something.
+     */
     public static Builder builder() {
         return new Builder();
     }
@@ -38,12 +44,22 @@ public class WeightedCostStrategy implements CostStrategy {
     public static class Builder {
         private final WeightedCostStrategy weightedCostStrategy = new WeightedCostStrategy();
 
+        /**
+         * addStrategyWithWeight.
+         * @param strategy 123.
+         * @param weight 123.
+         * @return something.
+         */
         public Builder addStrategyWithWeight(CostStrategy strategy, BigDecimal weight) {
             weightedCostStrategy.costStrategies.put(weight, strategy);
             weightedCostStrategy.totalWeight += weight.doubleValue();
             return this;
         }
 
+        /**
+         * WeightedCostStrategy.
+         * @return something
+         */
         public WeightedCostStrategy build() {
             if (weightedCostStrategy.totalWeight != 1.0) {
                 throw new IllegalStateException("Total weight must be 1.0");

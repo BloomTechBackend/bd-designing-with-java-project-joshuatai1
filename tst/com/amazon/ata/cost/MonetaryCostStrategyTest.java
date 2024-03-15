@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MonetaryCostStrategyTest {
 
     private static final Packaging BOX_10x10x20 =
-        new Box(BigDecimal.valueOf(10), BigDecimal.valueOf(10), BigDecimal.valueOf(20));
+        new Box(Material.CORRUGATE, BigDecimal.valueOf(10), BigDecimal.valueOf(10), BigDecimal.valueOf(20));
 
     private MonetaryCostStrategy strategy;
 
@@ -34,4 +34,17 @@ public class MonetaryCostStrategyTest {
         assertTrue(BigDecimal.valueOf(5.43).compareTo(shipmentCost.getCost()) == 0,
             "Incorrect monetary cost calculation for a box with dimensions 10x10x20.");
     }
+
+    //TODO write a unit test for MonetaryCostStrategy for PolyBag
+//    @Test
+//    void getCost_LAMINATED_PLASTIC_returnsCorrectCost(){
+//        //GIVEN
+//        ShipmentOption option = ShipmentOption.builder()
+//                .withPackaging()
+//
+//        //WHEN
+//
+//
+//        //THEN
+//    }
 }

@@ -33,30 +33,13 @@ class ShipmentServiceTest {
 
     private FulfillmentCenter existentFC = new FulfillmentCenter("ABE2");
     private FulfillmentCenter nonExistentFC = new FulfillmentCenter("NonExistentFC");
-
     private ShipmentService shipmentService = new ShipmentService(new PackagingDAO(new PackagingDatastore()),
             new MonetaryCostStrategy());
-
-//    @Test
-//    void testFindShipmentOptionWithUnknownFulfillmentCenter(){
-//        PackagingDAO packagingDAO = new PackagingDAO();
-//        CostStrategy costStrategy = new SimpleCostStrategy();
-//
-//        ShipmentService service = new ShipmentService(packagingDAO, costStrategy);
-//
-//        Item item = new Item();
-//        FulfillmentCenter center = new FulfillmentCenter();
-//
-//        ShipmentOption result = service.findShipmentOption(item, center);
-//
-//        Assertions.assertNotNull(result, "ShipmentOption should not be null");
-//    }
 
     @Test
     void findBestShipmentOption_existentFCAndItemCanFit_returnsShipmentOption() {
         // GIVEN & WHEN
         ShipmentOption shipmentOption = shipmentService.findShipmentOption(smallItem, existentFC);
-
         // THEN
         assertNotNull(shipmentOption);
     }
@@ -74,7 +57,6 @@ class ShipmentServiceTest {
     void findBestShipmentOption_nonExistentFCAndItemCanFit_returnsShipmentOption() {
         // GIVEN & WHEN
         ShipmentOption shipmentOption = shipmentService.findShipmentOption(smallItem, nonExistentFC);
-
         // THEN
         assertNull(shipmentOption);
     }
@@ -83,7 +65,6 @@ class ShipmentServiceTest {
     void findBestShipmentOption_nonExistentFCAndItemCannotFit_returnsShipmentOption() {
         // GIVEN & WHEN
         ShipmentOption shipmentOption = shipmentService.findShipmentOption(largeItem, nonExistentFC);
-
         // THEN
         assertNull(shipmentOption);
     }

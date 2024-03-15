@@ -19,16 +19,20 @@ class PackagingDatastoreTest {
     FulfillmentCenter pdx1 = new FulfillmentCenter("PDX1");
 
     Packaging package10Cm = new Box(
-            BigDecimal.valueOf(10), BigDecimal.valueOf(10), BigDecimal.valueOf(10));
+            Material.CORRUGATE, BigDecimal.valueOf(10), BigDecimal.valueOf(10), BigDecimal.valueOf(10));
 
     Packaging package20Cm = new Box(
-            BigDecimal.valueOf(20), BigDecimal.valueOf(20), BigDecimal.valueOf(20));
+            Material.CORRUGATE, BigDecimal.valueOf(20), BigDecimal.valueOf(20), BigDecimal.valueOf(20));
 
     Packaging package40Cm = new Box(
-            BigDecimal.valueOf(40), BigDecimal.valueOf(40), BigDecimal.valueOf(40));
+            Material.CORRUGATE, BigDecimal.valueOf(40), BigDecimal.valueOf(40), BigDecimal.valueOf(40));
 
     Packaging package60Cm = new Box(
-            BigDecimal.valueOf(60), BigDecimal.valueOf(60), BigDecimal.valueOf(60));
+            Material.CORRUGATE, BigDecimal.valueOf(60), BigDecimal.valueOf(60), BigDecimal.valueOf(60));
+
+    Packaging packageBag2000 = new PolyBag(Material.LAMINATED_PLASTIC, BigDecimal.valueOf(2000));
+
+    Packaging packageBag10000 = new PolyBag(Material.LAMINATED_PLASTIC, BigDecimal.valueOf(10000));
 
     FcPackagingOption ind1_10Cm = new FcPackagingOption(ind1, package10Cm);
     FcPackagingOption abe2_20Cm = new FcPackagingOption(abe2, package20Cm);
@@ -39,14 +43,17 @@ class PackagingDatastoreTest {
     FcPackagingOption iad2_20Cm = new FcPackagingOption(iad2, package20Cm);
     FcPackagingOption pdx1_40Cm = new FcPackagingOption(pdx1, package40Cm);
     FcPackagingOption pdx1_60Cm = new FcPackagingOption(pdx1, package60Cm);
+    FcPackagingOption IAD2_2000_Bag = new FcPackagingOption(iad2, packageBag2000);
+    FcPackagingOption IAD2_10000_Bag = new FcPackagingOption(iad2, packageBag10000);
 
-//TODO Need to fix this test.
+
+    //TODO I think I edited the test
     @Test
     public void getFcPackagingOptions_get_returnAllOptions() {
         // GIVEN
         PackagingDatastore packagingDatastore = new PackagingDatastore();
         List<FcPackagingOption> expectedPackagingOptions = Arrays.asList(ind1_10Cm, abe2_20Cm, abe2_40Cm, yow4_10Cm,
-                yow4_20Cm, yow4_60Cm, iad2_20Cm, iad2_20Cm, pdx1_40Cm, pdx1_60Cm, pdx1_60Cm);
+                yow4_20Cm, yow4_60Cm, iad2_20Cm, iad2_20Cm, pdx1_40Cm, pdx1_60Cm, pdx1_60Cm, IAD2_2000_Bag, IAD2_10000_Bag);
 
         // WHEN
         List<FcPackagingOption> fcPackagingOptions = packagingDatastore.getFcPackagingOptions();
